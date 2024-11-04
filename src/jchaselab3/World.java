@@ -19,11 +19,14 @@ public class World {
 		Item trash = new Item ("container", "This is someone's old take out. Feels heavy.");
 		Item fork = new Item("fork", "This is a plastic fork.");
 		Item shoe = new Item ("shoe", "This is a shoe. How did someone lose just one?");
+		Combination combo = new Combination("combination", "This is the combination to a safe.");
+		Safe safe = new Safe ("safe", "This is a safe. Very sturdy.");
 		
 		lobbyOne.addExit(lobbyTwo, 'u');
 		lobbyOne.addObject(spoon);
 		lobbyOne.addObject(fork);
 		lobbyOne.addObject(shoe);
+		lobbyOne.addObject(combo);
 		
 		lobbyOne.addExit(studyRoom, 'e');
 		lobbyOne.addExit(engineering, 'n');
@@ -34,6 +37,7 @@ public class World {
 
 		studyRoom.addExit(lobbyOne, 'w');
 		studyRoom.addObject(trash);
+		studyRoom.addObject(safe);
 
 		engineering.addExit(lobbyOne, 's');
 
@@ -44,6 +48,7 @@ public class World {
 
 		storageCloset.addExit(robotics, 'w');
 		storageCloset.addObject(key);
+		storageCloset.addObject(combo);
 
 		return lobbyOne;  //starting room
 	}

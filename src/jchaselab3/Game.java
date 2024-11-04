@@ -8,13 +8,15 @@ import java.util.ArrayList;
 //navigates through the game to print rooms
 
 public class Game {
+
+	static Room currentRoom= World.buildWorld();
+
 	public static void main(String[] args) {
 		runGame();
 	}
-	private static ArrayList<Item> inventory = new ArrayList<Item>();
+	public static ArrayList<Item> inventory = new ArrayList<Item>();
 
 	public static void runGame() {
-		Room currentRoom= World.buildWorld();
 		Scanner input = new Scanner(System.in);
 		
 		String command; //player's command
@@ -27,10 +29,89 @@ public class Game {
 
 			
 			switch(words[0]) {
-			case "look":
-				System.out.println("You are trying to look at the " + words[1] + ".");
-				
+			case "use" :
+				System.out.println("\nYou are trying to use the " + words[1] + ".");
+				if (currentRoom.getObject(words[1])==null) {
+					if (inventory.size() > 0) {
+						for (int c=0; c<inventory.size(); c++) {
+							Item s = inventory.get(c);
+							if ((s.getName()).equals(words[1])) {
+								s.use();
+							}
+						}
+					}
+					else {
+						System.out.println("This object is not here.");
+					}
 					
+				}
+				else {
+					Item s = currentRoom.getObject(words[1]);
+					if (s == null) {
+						System.out.println("This object is not here.");
+					}
+					else {
+						Item object = currentRoom.getObject(words[1]);
+						object.use();
+						}					
+					}
+				break;
+			
+			case "open":
+				System.out.println("\nYou are trying to open the " + words[1] + ".");
+				
+				if (currentRoom.getObject(words[1])==null) {
+					if (inventory.size() > 0) {
+						for (int c=0; c<inventory.size(); c++) {
+							Item s = inventory.get(c);
+							if ((s.getName()).equals(words[1])) {
+								s.open();
+							}
+						}
+					}
+					else {
+						System.out.println("This object is not here.");
+					}
+					
+				}
+				else {
+					Item s = currentRoom.getObject(words[1]);
+					if (s == null) {
+						System.out.println("This object is not here.");
+					}
+					else {
+						Item object = currentRoom.getObject(words[1]);
+						object.open();
+						}					
+					}
+				break;
+				
+				
+			case "look":
+				System.out.println("\nYou are trying to look at the " + words[1] + ".");
+				if (currentRoom.getObject(words[1])==null) {
+					if (inventory.size() > 0) {
+						for (int c=0; c<inventory.size(); c++) {
+							Item s = inventory.get(c);
+							if ((s.getName()).equals(words[1])) {
+								System.out.println("Description of the "+words[1]+": "+s.getDesc());
+							}
+						}
+					}
+					else {
+						System.out.println("This object is not here.");
+					}
+					
+				}
+				else {
+					Item s = currentRoom.getObject(words[1]);
+					if (s == null) {
+						System.out.println("This object is not here.");
+					}
+					else {
+						System.out.println("Description of the "+words[1]+": "+s.getDesc());
+						}					
+					}
 				break;
 			case "take":
 				System.out.println("\nYou are trying to take the "+words[1]+".");
@@ -81,5 +162,26 @@ public class Game {
 		}while(!command.equals("x"));
 		
 		input.close();
+	}
+	
+	public static void print(Object obj) {
+		System.out.println(obj.toString());
+	}
+	
+	public static Room getCurrent() {
+		return currentRoom;
+	}
+	
+	public Item getItem(String n) {
+		if (inventory.size() > 0) {
+			for (int c=0; c<inventory.size(); c++) {
+				Item s = inventory.get(c);
+				if ((s.getName()).equals(n)) {
+					return s;
+				}
+			}
+		}
+	
+		return null;
 	}
 }

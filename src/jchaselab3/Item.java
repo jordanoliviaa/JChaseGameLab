@@ -28,6 +28,14 @@ public class Item {
 	public String toString() {
 		return name + "";
 	}
+	
+	public void open() {
+		System.out.println("You can't open that!");
+	}
+	
+	public void use() {
+		System.out.println("You can't use that!");
+	}
 
 }
  
