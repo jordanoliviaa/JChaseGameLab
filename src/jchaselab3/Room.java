@@ -7,6 +7,7 @@ import java.util.HashMap;
 // 4 methods will be made in this class: constructor, addExit(direction, Room), 
 
 public class Room {
+	private String name;
 	private String description;
 	private Room east;
 	private Room west;
@@ -14,10 +15,12 @@ public class Room {
 	private Room south;
 	private Room up;
 	private Room down;
+	public boolean isLocked;
 	HashMap<String, Item> roomContent = new HashMap<String, Item>();
 	
 	
-	public Room(String desc) {
+	public Room(String n, String desc) {
+		name = n;
 		description = desc;
 	}
 	
@@ -78,8 +81,20 @@ public class Room {
 		roomContent.remove(n);
 	}
 	
+	public void setLocked(boolean lock) {
+		isLocked = lock;
+	}
+	
+	public boolean getLocked() {
+		return isLocked;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
 	public String toString() {
-		return description + "";
+		return name + "\n" + description + "";
 	}
 
 	

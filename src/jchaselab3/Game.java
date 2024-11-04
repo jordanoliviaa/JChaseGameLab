@@ -148,8 +148,13 @@ public class Game {
 					System.out.println("There is no door here, just wall.");
 				}
 				else {
+					if (nextRoom.isLocked == false) {
 					currentRoom = nextRoom;
 					System.out.println();
+					}
+					else {
+						System.out.println("You silly goose, this door is locked. find a key and try again.");
+					}
 				}
 				break;
 			case "x":

@@ -7,15 +7,15 @@ public class World {
 	// Builds the game world.
 	// Returns the room the player starts in.
 	public static Room buildWorld() {
-		Room lobbyOne = new Room("You are in the first floor lobby.");
-		Room lobbyTwo = new Room("You are in the second floor lobby.");
-		Room studyRoom = new Room ("You are in the study room.");
-		Room chemLab = new Room ("You are in the Chemistry lab.");
-		Room engineering = new Room ("You are in the Engineering suite!");
-		Room robotics = new Room ("You are in the robotics lab.");
-		Room storageCloset = new Room ("You are in the storage closet.");
+		Room lobbyOne = new Room("First Floor Lobby","You are in the first floor lobby. It's a little bit dusty.");
+		Room lobbyTwo = new Room("Second Floor Lobby","You are in the second floor lobby. Why is the wall sticky?");
+		Room studyRoom = new Room ("Study Room","You are in the study room, but now is not the time to study.");
+		Room chemLab = new Room ("Chemistry Lab","You are in the Chemistry lab. It smells suspiciously clean...");
+		Room engineering = new Room ("Engineering", "You are in the Engineering suite! You can feel the stress just by being in here.");
+		Room robotics = new Room ("Robotics Lab","You are in the robotics lab. All of the machinery is nice, but wayyy too complicated.");
+		Room storageCloset = new Room ("Storage Closet", "You are in the storage closet. They really need to organize in here.");
 		Item spoon = new Item ("spoon", "A rusty spoon. Gross.");
-		Item key = new Item ("key", "This is a red key. Don't know what it goes to.");
+		Key redKey = new Key ("key", "This is a red key. Don't know what it goes to.");
 		Item trash = new Item ("container", "This is someone's old take out. Feels heavy.");
 		Item fork = new Item("fork", "This is a plastic fork.");
 		Item shoe = new Item ("shoe", "This is a shoe. How did someone lose just one?");
@@ -47,7 +47,7 @@ public class World {
 		robotics.addExit(storageCloset, 'e');
 
 		storageCloset.addExit(robotics, 'w');
-		storageCloset.addObject(key);
+		storageCloset.addObject(redKey);
 		storageCloset.addObject(combo);
 
 		return lobbyOne;  //starting room
