@@ -15,18 +15,19 @@ public class World {
 		Room robotics = new Room ("Robotics Lab","You are in the robotics lab. All of the machinery is nice, but wayyy too complicated.");
 		Room storageCloset = new Room ("Storage Closet", "You are in the storage closet. They really need to organize in here.");
 		Item spoon = new Item ("spoon", "A rusty spoon. Gross.");
-		Key redKey = new Key ("key", "This is a red key. Don't know what it goes to.");
-		Item trash = new Item ("container", "This is someone's old take out. Feels heavy.");
+		Box trash = new Box ("container", "This is someone's old take out. Feels heavy.");
 		Item fork = new Item("fork", "This is a plastic fork.");
 		Item shoe = new Item ("shoe", "This is a shoe. How did someone lose just one?");
 		Combination combo = new Combination("combination", "This is the combination to a safe.");
 		Safe safe = new Safe ("safe", "This is a safe. Very sturdy.");
-		
+		Note note = new Note ("note", "This is a note, what does it say?");
+		Item drawing = new Item ("drawing", "This is a poorly drawn image of a diamond (maybe...)");
+
 		lobbyOne.addExit(lobbyTwo, 'u');
 		lobbyOne.addObject(spoon);
 		lobbyOne.addObject(fork);
 		lobbyOne.addObject(shoe);
-		lobbyOne.addObject(combo);
+		lobbyOne.addObject(drawing);
 		
 		lobbyOne.addExit(studyRoom, 'e');
 		lobbyOne.addExit(engineering, 'n');
@@ -40,15 +41,17 @@ public class World {
 		studyRoom.addObject(safe);
 
 		engineering.addExit(lobbyOne, 's');
-
+		
 		chemLab.addExit(lobbyTwo, 'e');
+		chemLab.addObject(note);
+		
 
 		robotics.addExit(lobbyTwo, 'n');
 		robotics.addExit(storageCloset, 'e');
 
 		storageCloset.addExit(robotics, 'w');
-		storageCloset.addObject(redKey);
 		storageCloset.addObject(combo);
+		storageCloset.setLocked(true);
 
 		return lobbyOne;  //starting room
 	}

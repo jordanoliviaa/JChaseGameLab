@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Game {
 
-	static Room currentRoom= World.buildWorld();
+	public static Room currentRoom= World.buildWorld();
 
 	public static void main(String[] args) {
 		runGame();
