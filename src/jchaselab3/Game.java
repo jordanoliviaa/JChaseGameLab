@@ -2,6 +2,9 @@ package jchaselab3;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 //contains the main method
 //tells the world to create game world
@@ -10,11 +13,14 @@ import java.util.ArrayList;
 public class Game {
 
 	public static Room currentRoom= World.buildWorld();
+	
+	public static ArrayList<Item> inventory = new ArrayList<Item>();
+
+	public static HashMap<String, String> rooms = new HashMap<String, String>();
 
 	public static void main(String[] args) {
 		runGame();
 	}
-	public static ArrayList<Item> inventory = new ArrayList<Item>();
 
 	public static void runGame() {
 		Scanner input = new Scanner(System.in);
@@ -145,7 +151,7 @@ public class Game {
 			case "d":
 				Room nextRoom = currentRoom.getExit(command.charAt(0));
 				if (nextRoom == null) {
-					System.out.println("There is no door here, just wall.");
+					System.out.println("\nThere is no door here, just wall.");
 				}
 				else {
 					if (nextRoom.isLocked == false) {
@@ -153,7 +159,7 @@ public class Game {
 					System.out.println();
 					}
 					else {
-						System.out.println("You silly goose, this door is locked. find a key and try again.");
+						System.out.println("\nYou silly goose, this door is locked. find a key and try again.");
 					}
 				}
 				break;
@@ -188,5 +194,17 @@ public class Game {
 		}
 	
 		return null;
+	}
+	
+	public static void roomsBuild() {
+		try {
+			Scanner input = new Scanner(new File("rooms.txt"));
+			while(input.hasNextLine()){
+				
+			input.close();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("This file doesn't exist.");
+		}
 	}
 }
