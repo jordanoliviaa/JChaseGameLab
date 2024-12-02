@@ -7,13 +7,13 @@ public class World {
 	// Builds the game world.
 	// Returns the room the player starts in.
 	public static Room buildWorld() {
-		Room lobbyOne = new Room("First Floor Lobby","You are in the first floor lobby. It's a little bit dusty.");
-		Room lobbyTwo = new Room("Second Floor Lobby","You are in the second floor lobby. Why is the wall sticky?");
-		Room studyRoom = new Room ("Study Room","You are in the study room, but now is not the time to study.");
-		Room chemLab = new Room ("Chemistry Lab","You are in the Chemistry lab. It smells suspiciously clean...");
-		Room engineering = new Room ("Engineering", "You are in the Engineering suite! You can feel the stress just by being in here.");
-		Room robotics = new Room ("Robotics Lab","You are in the robotics lab. All of the machinery is nice, but wayyy too complicated.");
-		Room storageCloset = new Room ("Storage Closet", "You are in the storage closet. They really need to organize in here.");
+		Room lobbyOne = new Room("First Floor Lobby");
+		Room lobbyTwo = new Room("Second Floor Lobby");
+		Room studyRoom = new Room ("Study Room");
+		Room chemLab = new Room ("Chemistry Lab");
+		Room engineering = new Room ("Engineering");
+		Room robotics = new Room ("Robotics Lab");
+		Room storageCloset = new Room ("Storage Closet");
 		Item spoon = new Item ("spoon", "A rusty spoon. Gross.");
 		Box trash = new Box ("container", "This is someone's old take out. Feels heavy.");
 		Item fork = new Item("fork", "This is a plastic fork.");

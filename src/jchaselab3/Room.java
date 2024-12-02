@@ -1,14 +1,14 @@
 package jchaselab3;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 //defines what a room object is in the game
 // object variables: description(str), east, west, north, south, up, and down
 // 4 methods will be made in this class: constructor, addExit(direction, Room), 
 
-public class Room {
+public class Room implements Serializable{
 	private String name;
-	private String description;
 	private Room east;
 	private Room west;
 	private Room north;
@@ -19,9 +19,8 @@ public class Room {
 	HashMap<String, Item> roomContent = new HashMap<String, Item>();
 	
 	
-	public Room(String n, String desc) {
+	public Room(String n) {
 		name = n;
-		description = desc;
 	}
 	
 	public Room getExit(char move) {
@@ -96,9 +95,11 @@ public class Room {
 	public void setName(String n) {
 		name = n;
 	}
-	
+	public String getDesc(Room r) {
+		return Game.rooms.get(r);
+	}
 	public String toString() {
-		return name + "\n" + description + "";
+		return name + "\n";
 	}
 
 	
