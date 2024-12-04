@@ -21,7 +21,7 @@ public class Game {
 	
 	public static ArrayList<Item> inventory = new ArrayList<Item>();
 
-	public static HashMap<Room, String> rooms = new HashMap<Room, String>();
+	public static HashMap<String, String> rooms = new HashMap<String, String>();
 
 	public static void main(String[] args) {
 		runGame();
@@ -35,7 +35,7 @@ public class Game {
 			System.out.println();
 			Game.roomsBuild();
 			System.out.println(currentRoom);
-			System.out.println(currentRoom.getDesc(currentRoom));
+			System.out.println(currentRoom.getDesc());
 			System.out.print("What do you want to do?: ");
 			command = input.nextLine();
 			String[] words = command.split(" ");
@@ -44,9 +44,11 @@ public class Game {
 			switch(words[0]) {
 			case "save" :
 				Game.saveGame("GameTest");
+				break;
 				
 			case "load" :
 				Game.loadGame("GameTest");
+				break;
 				
 			case "use" :
 				System.out.println("\nYou are trying to use the " + words[1] + ".");
@@ -209,18 +211,18 @@ public class Game {
 		return null;
 	}
 	
+	public static void processCommand(String command) {
+		
+	}
+	
 	public static void roomsBuild() {
 		try {
 			Scanner input = new Scanner(new File("rooms"));
 			while(input.hasNextLine()){
 				String name = new String (input.nextLine());
-				String descript = input.nextLine();
-				Room newRoom = new Room (name);
-				rooms.put(newRoom, descript);
+				String descript = new String (input.nextLine());
+				rooms.put(name, descript);
 				input.nextLine();
-				System.out.println("name:\n" + name);
-				System.out.println("Description:\n" + descript);
-				System.out.println ("Hashmap output from name: \n"+ rooms.get(newRoom));
 			}
 			input.close();
 		} catch (FileNotFoundException e) {

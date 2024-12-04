@@ -95,7 +95,8 @@ public class Room implements Serializable{
 	public void setName(String n) {
 		name = n;
 	}
-	public String getDesc(Room r) {
+	public String getDesc() {
+		String r = new String (Game.currentRoom.getName());
 		return Game.rooms.get(r);
 	}
 	public String toString() {
