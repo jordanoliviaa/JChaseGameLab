@@ -6,34 +6,39 @@ import java.awt.event.*;
 
 public class GUI extends JFrame implements ActionListener {
 
-	private JButton button;
-	private JTextArea text;
-	private JPanel panel;
-	private JLabel label;
-	private JTextField textfield;
 	
 	
 	public GUI() {
 		buildWindow();
 	}
-
+	public JTextArea text;
+	private JTextField textfield;
+	
 	@Override
 	public void actionPerformed(ActionEvent event) {
-
-		
+		String s = textfield.getText();
+		Game.processCommand(s);
+		textfield.setText("");
 	}
 
 	private void buildWindow() {
 		setTitle("Game");
-		setLayout(new BorderLayout()); // Specifies border layout
-		 text = new JTextArea();
-		 panel = new JPanel();
-		 label = new JLabel("What would you like to do?");
-		 textfield = new JTextField();
-		 button = new JButton("Execute");
-		 panel.add(label);
-		 panel.add(textfield);
-		 panel.add(button);
+		setLayout(new BorderLayout()); // Specifies border layout 
+	
+		textfield = new JTextField();
+		text = new JTextArea();
+		
+		JLabel label = new JLabel("What would you like to do?");
+		JPanel panel = new JPanel(new GridLayout(3,1));
+		JButton button = new JButton("Execute");
+		button.addActionListener(this);
+		
+		add(text, BorderLayout.CENTER); 
+		add(panel, BorderLayout.SOUTH);
+			
+		panel.add(label);
+		panel.add(textfield);
+		panel.add(button);
 		 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 500);
