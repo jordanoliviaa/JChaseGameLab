@@ -21,6 +21,7 @@ public class Room implements Serializable{
 	
 	public Room(String n) {
 		name = n;
+//		Game.saveLoad.put(n, this);
 	}
 	
 	public Room getExit(char move) {

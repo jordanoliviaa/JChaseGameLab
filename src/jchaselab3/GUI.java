@@ -19,6 +19,9 @@ public class GUI extends JFrame implements ActionListener {
 		String s = textfield.getText();
 		Game.processCommand(s);
 		textfield.setText("");
+		Game.print("\n"+Game.currentRoom);
+		Game.print(Game.currentRoom.getDesc());
+		
 	}
 
 	private void buildWindow() {
@@ -27,15 +30,16 @@ public class GUI extends JFrame implements ActionListener {
 	
 		textfield = new JTextField();
 		text = new JTextArea();
+		JScrollPane scrollPane = new JScrollPane(text);
 		
 		JLabel label = new JLabel("What would you like to do?");
 		JPanel panel = new JPanel(new GridLayout(3,1));
 		JButton button = new JButton("Execute");
 		button.addActionListener(this);
 		
-		add(text, BorderLayout.CENTER); 
 		add(panel, BorderLayout.SOUTH);
-			
+		add(scrollPane, BorderLayout.CENTER);	
+	
 		panel.add(label);
 		panel.add(textfield);
 		panel.add(button);

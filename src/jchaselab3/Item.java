@@ -1,5 +1,7 @@
 package jchaselab3;
 
+import java.io.Serializable;
+
 public class Item {
 	public String description;
 	public String name;
@@ -30,11 +32,11 @@ public class Item {
 	}
 	
 	public void open() {
-		System.out.println("You can't open that!");
+		Game.print("You can't open that!");
 	}
 	
 	public void use() {
-		System.out.println("You can't use that!");
+		Game.print("You can't use that!");
 	}
 
 }
